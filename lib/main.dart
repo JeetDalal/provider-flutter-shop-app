@@ -1,0 +1,32 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shopapp/provider/prodct_provider.dart';
+import 'package:shopapp/screens/products_screen.dart';
+
+import 'screens/product_detail_screen.dart';
+
+void main() {
+  runApp(ChangeNotifierProvider(
+    child: const MyApp(),
+    create: (context) => ProductProvider(),
+  ));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: ProductsScreen(),
+      routes: {
+        '/product-details': (context) => const ProductDetailScreen(),
+      },
+    );
+  }
+}
